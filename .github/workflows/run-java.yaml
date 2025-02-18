@@ -20,7 +20,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'zulu'
-          cache: 'gradle'
+          # cache: 'gradle'
 
       - name: Compile
         run: javac src/main/java/app/gpuslave/hllwrld.java -d .
