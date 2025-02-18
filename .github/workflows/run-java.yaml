@@ -1,0 +1,27 @@
+name: Run Java
+
+on:
+  push:
+    branches:
+      - feature/add-java-runtime
+
+jobs:
+  build:
+    name: "Compile and Run Java"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'zulu'
+          cache: 'gradle'
+
+      - name: Compile
+        run: javac src/main/java/app/gpuslave/hllwrld.java -d .
+
+      - name: Run
+        run: java app.gpuslave.Main
