@@ -23,7 +23,7 @@ jobs:
           # cache: 'gradle'
 
       - name: Compile
-        run: javac src/main/java/app/gpuslave/hllwrld.java -d .
+        run: javac src/main/java/app/gpuslave/Main.java -d .
 
       - name: Run
         run: java app.gpuslave.Main
