@@ -15,15 +15,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'zulu'
-          # cache: 'gradle'
+          cache: 'gradle'
+      
+      - name: Setup Gradle 
+        uses: gradle/actions/setup-gradle@v4
 
-      - name: Compile
-        run: javac src/main/java/app/gpuslave/first/Main.java -d .
+      - name: Build
+        run: ./gradlew build
 
       - name: Run
-        run: java app.gpuslave.first.Main
+        run: ./gradlew run
+
+
+
+
+
+
+
+      # - name: Compile
+      #   run: javac src/main/java/app/gpuslave/first/First.java -d .
+
+      # - name: Run
+      #   run: java app.gpuslave.first.First
