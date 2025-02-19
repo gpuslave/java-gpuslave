@@ -1,4 +1,4 @@
-package app.gpuslave;
+package app.gpuslave.first;
 
 public class Main {
   public static void main(String[] args) {
