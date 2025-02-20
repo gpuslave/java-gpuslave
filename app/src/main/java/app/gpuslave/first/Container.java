@@ -47,4 +47,15 @@ public class Container<T> {
     System.arraycopy(elements, 0, newElements, 0, size);
     elements = newElements;
   }
+
+  public void print() {
+    System.out.print("[");
+    for (int i = 0; i < size; i++) {
+      System.out.print(elements[i]);
+      if (i < size - 1) {
+        System.out.print(", ");
+      }
+    }
+    System.out.println("]");
+  }
 }
