@@ -13,6 +13,6 @@ public class First {
 
     Container<Integer> arr = new Container<>();
     arr.add(1);
-
+    arr.print();
   }
 }
