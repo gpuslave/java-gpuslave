@@ -10,5 +10,9 @@ public class First {
   public static void main(String[] args) {
     First firstInstance = new First();
     System.out.println(firstInstance.Hello());
+
+    Container<Integer> arr = new Container<>();
+    arr.add(1);
+
   }
 }
