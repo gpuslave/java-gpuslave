@@ -42,3 +42,9 @@ tasks.named<JavaExec>("run") {
 // run {
 //     standardInput = System.in
 // }
+
+tasks.javadoc {
+    options {
+        memberLevel = JavadocMemberLevel.PRIVATE
+    }
+}
