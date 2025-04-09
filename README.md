@@ -11,6 +11,9 @@ This project is a simple Java application built with Gradle, demonstrating basic
   - [Getting Started](#getting-started)
     - [Cloning the Repository](#cloning-the-repository)
     - [Building the Project](#building-the-project)
+  - [Classes](#classes)
+    - [Container](#container)
+    - [ExpressionEvaluator](#expressionevaluator)
   - [Running the Application](#running-the-application)
   - [Running Tests](#running-tests)
   - [Generating Javadoc](#generating-javadoc)
@@ -44,6 +47,14 @@ Use the Gradle Wrapper to build the project:
 ```bash
 ./gradlew build
 ```
+
+## Classes
+
+### Container
+123
+
+### ExpressionEvaluator
+123
 
 ## Running the Application
 

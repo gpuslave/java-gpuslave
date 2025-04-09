@@ -24,11 +24,16 @@ public class First {
    * @param args Аргументы командной строки (не используются).
    */
   public static void main(String[] args) {
+    System.out.println("----------FIRST--LAB------------");
     First firstInstance = new First();
     System.out.println(firstInstance.Hello());
 
     Container<Integer> arr = new Container<>();
     arr.add(1);
     arr.print();
+
+    System.out.println("----------SECOND-LAB------------");
+    ExpressionEvaluator eval = new ExpressionEvaluator();
+    eval.evaluate("1+a+C + DOUBLE");
   }
 }

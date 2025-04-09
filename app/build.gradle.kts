@@ -34,3 +34,11 @@ application {
     // Define the main class for the application.
     mainClass = "app.gpuslave.first.First"
 }
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
+
+// run {
+//     standardInput = System.in
+// }

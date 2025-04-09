@@ -28,6 +28,7 @@ public class ExpressionEvaluator {
   public double evaluate(String expression) {
     try {
       expression = expression.replaceAll("\\s+", ""); // remove spaces
+      System.out.println(expression);
 
       collectVariables(expression);
 
@@ -35,19 +36,29 @@ public class ExpressionEvaluator {
         System.out.println(key);
       }
 
-      System.exit(0); // TEST -----------------------
-
       if (!variables.isEmpty()) {
         promptForVariables();
+
+        // debug
+        for (Map.Entry<String, Double> entry : variables.entrySet()) {
+          System.out.println(String.format("key: %s, value: %s",
+              entry.getKey(),
+              entry.getValue()));
+        }
+
         expression = replaceVariables(expression);
+        System.out.println(expression);
       }
+
+      // System.exit(0); // TEST -----------------------
 
       if (!checkBrackets(expression)) {
         throw new IllegalArgumentException("Некорректное выражение," +
             " ошибка в расстановке скобок");
       }
 
-      return evaluateExpression(expression);
+      // return evaluateExpression(expression);
+      return Double.valueOf(0);
 
     } catch (Exception e) {
       System.err.println("Ошибка: " + e.getMessage());
@@ -73,6 +84,26 @@ public class ExpressionEvaluator {
     if (varName.length() > 0) {
       variables.put(varName.toString(), null);
     }
+  }
+
+  private void promptForVariables() {
+    for (String var : variables.keySet()) {
+      System.out.print("Введите значение для " + var + ": ");
+      try {
+        double value = scanner.nextDouble();
+        variables.put(var, value);
+      } catch (Exception e) {
+        throw new IllegalArgumentException("Некорректное значения для переменной " +
+            var);
+      }
+    }
+  }
+
+  private String replaceVariables(String expression) {
+    for (Map.Entry<String, Double> entry : variables.entrySet()) {
+      expression = expression.replaceAll(entry.getKey(), entry.getValue().toString());
+    }
+    return expression;
   }
 
 }
