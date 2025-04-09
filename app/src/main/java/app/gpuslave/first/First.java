@@ -34,6 +34,8 @@ public class First {
 
     System.out.println("----------SECOND-LAB------------");
     ExpressionEvaluator eval = new ExpressionEvaluator();
-    eval.evaluate("1+a+C + DOUBLE");
+
+    System.out.println(eval.evaluate("(1+a+C) + (DOUBLE)"));
+    System.out.println(eval.evaluate("1+(2)*(300)"));
   }
 }
