@@ -100,7 +100,7 @@ public class CSV {
     /**
      * Создает нового сотрудника с указанными параметрами.
      * 
-     * @param id          ID сотрудника
+     * @param id          Идентификатор сотрудника
      * @param name        Имя сотрудника
      * @param gender      Пол сотрудника ('M' или 'F')
      * @param dateOfBirth Дата рождения сотрудника
@@ -117,9 +117,9 @@ public class CSV {
     }
 
     /**
-     * Возвращает ID сотрудника.
+     * Возвращает идентификатор сотрудника.
      * 
-     * @return ID сотрудника
+     * @return Идентификатор сотрудника
      */
     public int getId() {
       return id;
@@ -191,13 +191,13 @@ public class CSV {
         .build()) {
       String[] header = reader.readNext();
       if (header == null) {
-        throw new RuntimeException("CSV file is empty or has invalid format");
+        throw new RuntimeException("CSV файл пуст или имеет недопустимый формат");
       }
 
       String[] nextLine;
       while ((nextLine = reader.readNext()) != null) {
         if (nextLine.length < 6) {
-          System.err.println("Warning: Skipping invalid line with less than 6 fields");
+          System.err.println("Предупреждение: Пропуск некорректной строки с менее чем 6 полями");
           continue;
         }
 
@@ -210,7 +210,7 @@ public class CSV {
           try {
             dateOfBirth = dateFormat.parse(nextLine[3]);
           } catch (ParseException e) {
-            System.err.println("Warning: Invalid date format for ID " + id + ": " + nextLine[3]);
+            System.err.println("Предупреждение: Неверный формат даты для ID " + id + ": " + nextLine[3]);
             dateOfBirth = new Date(0);
           }
 
@@ -222,21 +222,21 @@ public class CSV {
           people.add(person);
 
         } catch (NumberFormatException e) {
-          System.err.println("Warning: Failed to parse numeric value: " + e.getMessage());
+          System.err.println("Предупреждение: Не удалось преобразовать числовое значение: " + e.getMessage());
         }
       }
     } catch (IOException | CsvValidationException e) {
-      throw new RuntimeException("Error reading CSV file: " + e.getMessage(), e);
+      throw new RuntimeException("Ошибка при чтении CSV файла: " + e.getMessage(), e);
     }
 
     return people;
   }
 
   /**
-   * Читает данные из CSV файла из папки resources и создает список объектов
+   * Читает данные из CSV файла из папки ресурсов и создает список объектов
    * Person.
    * 
-   * @param csvFileName Имя CSV файла в папке resources
+   * @param csvFileName Имя CSV файла в папке ресурсов
    * @param separator   Разделитель полей в CSV файле
    * @return Список объектов Person
    */
@@ -248,7 +248,7 @@ public class CSV {
     try (InputStream is = CSV.class.getClassLoader().getResourceAsStream(csvFileName)) {
 
       if (is == null) {
-        throw new RuntimeException("Resource not found: " + csvFileName);
+        throw new RuntimeException("Ресурс не найден: " + csvFileName);
       }
 
       CSVParser parser = new CSVParserBuilder().withSeparator(separator).build();
@@ -259,13 +259,13 @@ public class CSV {
 
         String[] header = reader.readNext();
         if (header == null) {
-          throw new RuntimeException("CSV file is empty or has invalid format");
+          throw new RuntimeException("CSV файл пуст или имеет недопустимый формат");
         }
 
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
           if (nextLine.length < 6) {
-            System.err.println("Warning: Skipping invalid line with less than 6 fields");
+            System.err.println("Предупреждение: Пропуск некорректной строки с менее чем 6 полями");
             continue;
           }
 
@@ -278,7 +278,7 @@ public class CSV {
             try {
               dateOfBirth = dateFormat.parse(nextLine[3]);
             } catch (ParseException e) {
-              System.err.println("Warning: Invalid date format for ID " + id + ": " + nextLine[3]);
+              System.err.println("Предупреждение: Неверный формат даты для ID " + id + ": " + nextLine[3]);
               dateOfBirth = new Date(0);
             }
 
@@ -290,12 +290,12 @@ public class CSV {
             people.add(person);
 
           } catch (NumberFormatException e) {
-            System.err.println("Warning: Failed to parse numeric value: " + e.getMessage());
+            System.err.println("Предупреждение: Не удалось преобразовать числовое значение: " + e.getMessage());
           }
         }
       }
     } catch (IOException | CsvValidationException e) {
-      throw new RuntimeException("Error reading CSV file: " + e.getMessage(), e);
+      throw new RuntimeException("Ошибка при чтении CSV файла: " + e.getMessage(), e);
     }
 
     return people;
