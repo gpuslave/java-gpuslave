@@ -7,6 +7,28 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
 
+/**
+ * Класс {@code ExpressionEvaluator} предназначен для вычисления математических
+ * выражений,
+ * представленных в виде строки.
+ * <p>
+ * Поддерживает основные арифметические операции (+, -, *, /), скобки для
+ * управления порядком вычислений,
+ * а также использование переменных с запросом их значений у пользователя во
+ * время выполнения.
+ * <p>
+ * Для вычисления используется алгоритм преобразования инфиксной нотации в
+ * постфиксную
+ * (Обратная Польская запись) с последующим вычислением результата.
+ * <p>
+ * Пример использования:
+ * 
+ * <pre>
+ * ExpressionEvaluator eval = new ExpressionEvaluator();
+ * double result = eval.evaluate("(2+3)*4");
+ * System.out.println(result); // Выведет: 20.0
+ * </pre>
+ */
 public class ExpressionEvaluator {
 
   /**
@@ -125,7 +147,7 @@ public class ExpressionEvaluator {
       }
     }
 
-    // edge case when varaible is at the end
+    // edge case when variable is at the end
     if (varName.length() > 0) {
       variables.put(varName.toString(), null);
     }
